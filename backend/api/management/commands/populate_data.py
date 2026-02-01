@@ -198,18 +198,16 @@ class Command(BaseCommand):
 
         # Create Values
         self.stdout.write('Creating values...')
-        Value.objects.all().delete()
         values_data = [
             {'title': 'Faith', 'description': 'We believe in the power of faith to transform lives', 'icon_name': 'FaHeart', 'order': 1},
             {'title': 'Community', 'description': 'We value authentic relationships and fellowship', 'icon_name': 'FaUsers', 'order': 2},
             {'title': 'Service', 'description': 'We are committed to serving God and others', 'icon_name': 'FaHandsHelping', 'order': 3},
         ]
         for value_data in values_data:
-            Value.objects.create(**value_data)
+            Value.objects.update_or_create(title=value_data['title'], defaults=value_data)
         
         # Create Leadership
         self.stdout.write('Creating leadership...')
-        Leadership.objects.all().delete()
         leadership_data = [
             {
                 'name': 'Pastor Erasmus Makarimayi', 
@@ -220,7 +218,7 @@ class Command(BaseCommand):
             },
         ]
         for leader_data in leadership_data:
-            Leadership.objects.create(**leader_data)
+            Leadership.objects.update_or_create(name=leader_data['name'], defaults=leader_data)
 
         # Create/Update Church Info
         self.stdout.write('Updating church info...')
