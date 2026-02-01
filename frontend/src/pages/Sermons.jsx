@@ -83,7 +83,7 @@ const Sermons = () => {
                   <span className="badge bg-primary px-3 py-2">Latest Message</span>
                 </div>
                 <h2 className="display-5 fw-bold mb-4">{latestSermon.title}</h2>
-                <div className="d-flex align-items-center gap-4 mb-4 text-muted">
+                <div className="d-flex align-items-center gap-4 mb-4 text-dark">
                   <span className="d-flex align-items-center gap-2">
                     <FaCalendarAlt className="text-primary" /> {latestSermon.date}
                   </span>
@@ -152,10 +152,10 @@ const Sermons = () => {
       {/* Sermon Archive Section */}
       <section className="section-padding">
         <Container>
-          <div className="d-flex justify-content-between align-items-end mb-5">
+          <div className="glass-panel bg-white p-4 shadow-sm rounded-4 border-0 mb-5 d-flex justify-content-between align-items-end">
             <div>
               <h2 className="display-6 fw-bold">Sermon <span className="text-gradient">Archive</span></h2>
-              <p className="text-muted mb-0">Explore our library of past messages</p>
+              <p className="text-dark mb-0">Explore our library of past messages</p>
             </div>
             <div className="d-none d-md-block">
               <Button variant="outline-primary" className="rounded-pill px-4">View All Sermons</Button>
@@ -178,12 +178,12 @@ const Sermons = () => {
                     </div>
                     <Card.Body className="p-4 p-lg-5">
                       <Card.Title className="h4 fw-bold mb-4">{sermon.title}</Card.Title>
-                      <Card.Text className="text-muted small mb-4 opacity-75">
+                      <Card.Text className="text-dark small mb-4">
                         {sermon.description}
                       </Card.Text>
-                      <div className="d-flex align-items-center text-primary mb-4 p-2 bg-primary bg-opacity-5 rounded-3 d-inline-flex">
-                        <FaUser size={14} className="me-2" />
-                        <span className="small fw-bold">{sermon.speaker}</span>
+                      <div className="d-flex align-items-center mb-4 p-2 bg-primary bg-opacity-5 rounded-3 d-inline-flex">
+                        <FaUser size={14} className="me-2 text-primary" />
+                        <span className="small fw-bold text-dark">{sermon.speaker}</span>
                       </div>
                       <div className="d-flex gap-2">
                         {sermon.video_url ? (

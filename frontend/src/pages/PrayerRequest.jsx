@@ -82,7 +82,7 @@ const PrayerRequest = () => {
                       <FaUserShield size={36} />
                     </div>
                     <h5 className="fw-bold mb-3">Confidential</h5>
-                    <p className="text-muted small mb-0">Your requests can be kept private between you and our pastoral team.</p>
+                    <p className="text-dark small mb-0">Your requests can be kept private between you and our pastoral team.</p>
                   </Card.Body>
                 </Card>
               </motion.div>
@@ -95,7 +95,7 @@ const PrayerRequest = () => {
                       <FaHandsHelping size={36} />
                     </div>
                     <h5 className="fw-bold mb-3">Community Support</h5>
-                    <p className="text-muted small mb-0">Our dedicated prayer chain is ready to lift you up in prayer daily.</p>
+                    <p className="text-dark small mb-0">Our dedicated prayer chain is ready to lift you up in prayer daily.</p>
                   </Card.Body>
                 </Card>
               </motion.div>
@@ -108,7 +108,7 @@ const PrayerRequest = () => {
                       <FaHeart size={36} />
                     </div>
                     <h5 className="fw-bold mb-3">God Hears</h5>
-                    <p className="text-muted small mb-0">Believe that God is listening and cares deeply about your situation.</p>
+                    <p className="text-dark small mb-0">Believe that God is listening and cares deeply about your situation.</p>
                   </Card.Body>
                 </Card>
               </motion.div>
@@ -123,13 +123,13 @@ const PrayerRequest = () => {
                 viewport={{ once: true }}
               >
                 <h2 className="display-6 fw-bold mb-4">How Can We <span className="text-gradient">Pray For You?</span></h2>
-                <p className="text-muted mb-4 lead" style={{ fontSize: '1.1rem' }}>
+                <p className="text-dark mb-4 lead" style={{ fontSize: '1.1rem' }}>
                   "Let us then approach God's throne of grace with confidence, so that we may receive 
                   mercy and find grace to help us in our time of need." - Hebrews 4:16
                 </p>
                 <div className="mb-4 glass-panel p-4 border-primary border-opacity-10">
                   <FaQuoteLeft className="text-primary opacity-25 mb-3" size={30} />
-                  <p className="fst-italic text-muted mb-0">
+                  <p className="fst-italic text-dark mb-0">
                     We take every request seriously. No concern is too small or too large for God. 
                     Whether it's a personal struggle, a health issue, or a shout of thanksgiving, 
                     we are here to stand with you.
@@ -182,7 +182,7 @@ const PrayerRequest = () => {
                         </Col>
                         <Col md={12}>
                           <Form.Group className="mb-4" controlId="prayerConfidential">
-                            <Form.Check type="checkbox" id="prayerConfidentialCheck" name="isConfidential" checked={formData.isConfidential} onChange={handleChange} label={<small className="text-muted">Keep this request confidential (pastoral team only)</small>} disabled={isSubmitting} />
+                            <Form.Check type="checkbox" id="prayerConfidentialCheck" name="isConfidential" checked={formData.isConfidential} onChange={handleChange} label={<small className="text-dark">Keep this request confidential (pastoral team only)</small>} disabled={isSubmitting} />
                           </Form.Group>
                         </Col>
                         <Col md={12}>

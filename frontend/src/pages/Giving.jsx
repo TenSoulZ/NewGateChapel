@@ -94,10 +94,10 @@ const Giving = () => {
                 viewport={{ once: true }}
               >
                 <h2 className="display-5 fw-bold mb-4">Your Gift <span className="text-gradient">Makes a Difference</span></h2>
-                <p className="lead text-muted mb-4">
+                <p className="lead text-dark mb-4">
                   When you give to New Gate Chapel, you're not just supporting a building; you're investing in lives transformed by the power of God.
                 </p>
-                <p className="text-muted mb-5">
+                <p className="text-dark mb-5">
                   Your tithes and offerings support our local ministries, community outreach programs, global missions, and the daily operations that make our services possible.
                 </p>
                 <div className="d-flex gap-4 align-items-center">
@@ -127,7 +127,7 @@ const Giving = () => {
               >
                 <FaHeart size={60} className="text-danger mb-4 opacity-75" />
                 <h3 className="fw-bold mb-3">A Cheerful Giver</h3>
-                <p className="text-muted italic mb-0">
+                <p className="text-dark italic mb-0">
                   "Generosity is an act of worship. It's a way we acknowledge that everything we have 
                   comes from God and belongs to Him."
                 </p>
@@ -169,7 +169,7 @@ const Giving = () => {
                       <Card.Title className="h3 fw-bold mb-0">{option.title}</Card.Title>
                     </div>
                     <Card.Body className="p-4 p-lg-5">
-                      <Card.Text className="text-muted mb-5 lead" style={{ fontSize: '1rem' }}>
+                      <Card.Text className="text-dark mb-5 lead" style={{ fontSize: '1rem' }}>
                         {option.description}
                       </Card.Text>
                       

@@ -85,23 +85,19 @@ const Services = () => {
         <Container>
           <Row className="text-center mb-5">
             <Col>
-              <motion.h2 
-                className="display-5 fw-bold mb-3"
+              <motion.div 
+                className="glass-panel bg-white p-4 shadow-sm rounded-4 d-inline-block border-0"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                Weekly <span className="text-gradient">Schedule</span>
-              </motion.h2>
-              <motion.p 
-                className="lead text-muted"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                Find a service that fits your schedule
-              </motion.p>
+                <h2 className="display-5 fw-bold mb-3">
+                  Weekly <span className="text-gradient">Schedule</span>
+                </h2>
+                <p className="lead text-dark mb-0">
+                  Find a service that fits your schedule
+                </p>
+              </motion.div>
             </Col>
           </Row>
 
@@ -157,30 +153,30 @@ const Services = () => {
                 <h2 className="display-5 fw-bold mb-4">
                   What to <span className="text-gradient">Expect</span>
                 </h2>
-                <p className="lead text-muted mb-4">
+                <p className="lead text-dark mb-4">
                   Your first visit to New Gate Chapel
                 </p>
                 <div className="mb-4">
                   <h5 className="fw-bold mb-2">Welcoming Atmosphere</h5>
-                  <p className="text-muted">
+                  <p className="text-dark">
                     Our greeters will welcome you warmly and help you find your way around.
                   </p>
                 </div>
                 <div className="mb-4">
                   <h5 className="fw-bold mb-2">Casual Dress</h5>
-                  <p className="text-muted">
+                  <p className="text-dark">
                     Come as you are! We value authenticity over formality.
                   </p>
                 </div>
                 <div className="mb-4">
                   <h5 className="fw-bold mb-2">Engaging Worship</h5>
-                  <p className="text-muted">
+                  <p className="text-dark">
                     Experience contemporary worship music and relevant biblical teaching.
                   </p>
                 </div>
                 <div>
                   <h5 className="fw-bold mb-2">Kids Ministry</h5>
-                  <p className="text-muted">
+                  <p className="text-dark">
                     Age-appropriate programs for children during services.
                   </p>
                 </div>
@@ -188,24 +184,24 @@ const Services = () => {
             </Col>
             <Col lg={6}>
               <motion.div
-                className="glass-panel p-5"
+                className="glass-panel p-5 bg-primary text-white"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
                 <div className="mb-4">
-                  <FaMapMarkerAlt size={40} className="text-primary mb-3" />
+                  <FaMapMarkerAlt size={40} className="text-warning mb-3" />
                   <h4 className="fw-bold mb-2">Location</h4>
-                  <p className="text-muted mb-0">
+                  <p className="text-white-50 mb-0">
                     Stand Number 15493, Figtree Road<br />
                     Buckland Terraces, Grace Park, Harare
                   </p>
                 </div>
-                <hr className="my-4" />
+                <hr className="my-4 border-white opacity-25" />
                 <div>
-                  <FaClock size={40} className="text-primary mb-3" />
+                  <FaClock size={40} className="text-warning mb-3" />
                   <h4 className="fw-bold mb-2">Service Duration</h4>
-                  <p className="text-muted mb-0">
+                  <p className="text-white-50 mb-0">
                     Approximately 90 minutes<br />
                     Including worship and teaching
                   </p>

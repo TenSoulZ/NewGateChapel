@@ -24,15 +24,17 @@ import SEO from '../components/common/SEO';
 import { motion } from 'framer-motion';
 import api from '../services/api';
 
+const DEFAULT_CONTACT_INFO = {
+  address: 'Stand Number 15493, Figtree Road, Buckland Terraces, Harare',
+  phone: '+263 71 233 2632',
+  email: 'info@newgatechapel.org',
+  facebook_url: 'https://www.facebook.com/profile.php?id=61557353668205',
+  twitter_url: 'https://x.com/newgatechapel1?s=11'
+};
+
 const Contact = () => {
   // State for church information with default fallback values
-  const [churchInfo, setChurchInfo] = useState({
-    address: 'Stand Number 15493, Figtree Road, Buckland Terraces, Harare',
-    phone: '+263 71 233 2632',
-    email: 'info@newgatechapel.org',
-    facebook_url: 'https://www.facebook.com/profile.php?id=61557353668205',
-    twitter_url: 'https://x.com/newgatechapel1?s=11'
-  });
+  const [churchInfo, setChurchInfo] = useState(DEFAULT_CONTACT_INFO);
 
   /**
    * Fetches church contact information on component mount.
@@ -44,7 +46,8 @@ const Contact = () => {
         const infoData = await api.getChurchInfo();
         const info = (infoData?.results || infoData || [])[0];
         if (info) {
-          setChurchInfo(info);
+          // Merge API data with defaults to ensure no fields are lost
+          setChurchInfo(prev => ({ ...prev, ...info }));
         }
       } catch (error) {
         // Silent fail - default contact info will be used
@@ -119,23 +122,23 @@ const Contact = () => {
 
   /**
    * Contact information cards displayed at top of page.
-   * Data pulled from churchInfo state.
+   * Data pulled from churchInfo state with robust fallbacks.
    */
   const contactInfo = [
     {
       icon: <FaMapMarkerAlt size={30} />,
       title: 'Address',
-      content: churchInfo.address
+      content: churchInfo.address || DEFAULT_CONTACT_INFO.address
     },
     {
       icon: <FaPhone size={30} />,
       title: 'Phone',
-      content: churchInfo.phone
+      content: churchInfo.phone || DEFAULT_CONTACT_INFO.phone
     },
     {
       icon: <FaEnvelope size={30} />,
       title: 'Email',
-      content: churchInfo.email
+      content: churchInfo.email || DEFAULT_CONTACT_INFO.email
     }
   ];
 
@@ -174,7 +177,7 @@ const Contact = () => {
                         {info.icon}
                       </div>
                       <Card.Title className="h5 fw-bold mb-3">{info.title}</Card.Title>
-                      <Card.Text className="text-muted small">
+                      <Card.Text className="text-dark small">
                         {info.content}
                       </Card.Text>
                     </Card.Body>
@@ -196,12 +199,14 @@ const Contact = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="display-6 fw-bold mb-4">
-                  Send Us a <span className="text-gradient">Message</span>
-                </h2>
-                <p className="lead text-muted mb-4">
-                  Fill out the form below and we'll get back to you as soon as possible.
-                </p>
+                <div className="glass-panel bg-white p-4 shadow-sm rounded-4 border-0 mb-4">
+                  <h2 className="display-6 fw-bold mb-3">
+                    Send Us a <span className="text-gradient">Message</span>
+                  </h2>
+                  <p className="lead text-dark mb-0">
+                    Fill out the form below and we'll get back to you as soon as possible.
+                  </p>
+                </div>
 
                 {status.message && (
                   <Alert variant={status.type} className="mb-4">
@@ -311,7 +316,7 @@ const Contact = () => {
               >
                 <div className="glass-panel p-4 mb-4">
                   <h4 className="fw-bold mb-3">Visit Us</h4>
-                  <p className="text-muted mb-3">
+                  <p className="text-dark mb-3">
                     We'd love to welcome you in person! Our church is located near Pomona, 
                     in the Buckland Terrace area.
                   </p>
@@ -329,10 +334,10 @@ const Contact = () => {
 
                 <div className="glass-panel p-4">
                   <h4 className="fw-bold mb-3">Plan Your Visit</h4>
-                  <p className="text-muted mb-3">
+                  <p className="text-dark mb-3">
                     First time visiting? Here's what you need to know:
                   </p>
-                  <ul className="text-muted">
+                  <ul className="text-dark">
                     <li className="mb-2">Arrive 15 minutes early to find parking and get settled</li>
                     <li className="mb-2">Dress casually - come as you are!</li>
                     <li className="mb-2">Kids programs available for all ages</li>

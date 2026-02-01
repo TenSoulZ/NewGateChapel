@@ -154,23 +154,19 @@ const Ministries = () => {
         <Container>
           <Row className="text-center mb-5">
             <Col>
-              <motion.h2 
-                className="display-5 fw-bold mb-3"
+              <motion.div 
+                className="glass-panel bg-white p-4 shadow-sm rounded-4 d-inline-block border-0"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                Grace <span className="text-gradient">Ministries</span>
-              </motion.h2>
-              <motion.p 
-                className="lead text-muted"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                Every member is a minister - find your place to serve
-              </motion.p>
+                <h2 className="display-5 fw-bold mb-3">
+                  Grace <span className="text-gradient">Ministries</span>
+                </h2>
+                <p className="lead text-dark mb-0">
+                  Every member is a minister - find your place to serve
+                </p>
+              </motion.div>
             </Col>
           </Row>
 
@@ -202,7 +198,7 @@ const Ministries = () => {
                         )}
                       </div>
                       <Card.Title className="h4 fw-bold mb-3">{ministry.title}</Card.Title>
-                      <Card.Text className="text-muted small px-3">
+                      <Card.Text className="text-dark small px-3">
                         {ministry.description}
                       </Card.Text>
                     </Card.Body>
@@ -236,7 +232,7 @@ const Ministries = () => {
                   Ready to Serve?
                 </motion.h2>
                 <motion.p 
-                  className="lead mb-5 opacity-75"
+                  className="lead mb-5"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}

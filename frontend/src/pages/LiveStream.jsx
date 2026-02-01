@@ -160,20 +160,20 @@ const LiveStream = () => {
                         </div>
                         </div>
                         <h3 className="display-5 fw-bold mb-3">Next Live <span className="text-warning">Service</span></h3>
-                        <p className="lead opacity-75 mb-5 fw-light">{nextService.title}</p>
+                        <p className="lead mb-5 fw-light">{nextService.title}</p>
                         
                         <Row className="g-4 mb-5 justify-content-center w-100" style={{ maxWidth: '500px' }}>
                         <Col xs={6}>
                             <div className="glass-panel py-4 bg-white bg-opacity-5 border-white border-opacity-10">
                             <FaCalendarAlt className="text-primary mb-3" size={24} />
-                            <div className="small opacity-75 uppercase fw-bold mb-1 text-dark" style={{ letterSpacing: '1px' }}>SERVICE DAY</div>
+                            <div className="small text-dark uppercase fw-bold mb-1" style={{ letterSpacing: '1px' }}>SERVICE DAY</div>
                             <div className="h5 mb-0 fw-bold text-dark">{nextService.day}</div>
                             </div>
                         </Col>
                         <Col xs={6}>
                             <div className="glass-panel py-4 bg-white bg-opacity-5 border-white border-opacity-10">
                             <FaClock className="text-primary mb-3" size={24} />
-                            <div className="small opacity-75 uppercase fw-bold mb-1 text-dark" style={{ letterSpacing: '1px' }}>SERVICE TIME</div>
+                            <div className="small text-dark uppercase fw-bold mb-1" style={{ letterSpacing: '1px' }}>SERVICE TIME</div>
                             <div className="h5 mb-0 fw-bold text-dark">{nextService.time}</div>
                             </div>
                         </Col>
@@ -212,7 +212,7 @@ const LiveStream = () => {
                   <div className="glass-panel p-4 text-center h-100 bg-white border-0 shadow-sm">
                     <FaYoutube size={40} className="text-danger mb-3" />
                     <h5 className="text-dark fw-bold">YouTube</h5>
-                    <p className="text-muted small mb-0">Subscribe to get live notifications on your devices.</p>
+                    <p className="text-dark small mb-0">Subscribe to get live notifications on your devices.</p>
                   </div>
                 </a>
               </motion.div>
@@ -223,7 +223,7 @@ const LiveStream = () => {
                   <div className="glass-panel p-4 text-center h-100 bg-white border-0 shadow-sm">
                     <FaFacebook size={40} className="text-primary mb-3" />
                     <h5 className="text-dark fw-bold">Facebook</h5>
-                    <p className="text-muted small mb-0">Follow our page to join the conversation live.</p>
+                    <p className="text-dark small mb-0">Follow our page to join the conversation live.</p>
                   </div>
                 </a>
               </motion.div>

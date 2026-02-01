@@ -198,7 +198,7 @@ const Home = () => {
       )}
 
       {/* Features Section */}
-      <section className="section-padding bg-transparent position-relative">
+      <section className="section-padding bg-light position-relative">
         <Container>
           <Row className="text-center mb-5">
             <Col>
@@ -232,14 +232,14 @@ const Home = () => {
       </section>
 
       {/* Upcoming Events Section */}
-      <section className="section-padding bg-light bg-opacity-50">
+      <section className="section-padding bg-secondary">
         <Container>
           <Row className="text-center mb-5">
             <Col>
-              <h2 className="display-4 fw-bold mb-3">
+              <h2 className="display-4 fw-bold mb-3 text-white">
                 Upcoming <span className="text-gradient">Events</span>
               </h2>
-              <p className="lead text-muted">
+              <p className="lead text-light">
                 Join us for these exciting gatherings
               </p>
             </Col>

@@ -256,7 +256,7 @@ body {
     -webkit-text-fill-color: transparent;
     background-clip: text;
     will-change: background-position;
-    animation: shine 8s linear infinite;
+    // animation: shine 8s linear infinite; // DISABLED FOR PERFORMANCE
 
     // Respect user motion preferences
     @media (prefers-reduced-motion: reduce) {
@@ -301,9 +301,9 @@ body {
 
 // Navbar Glass Effect
 .navbar-glass {
-    background: rgba(255, 255, 255, 0.6) !important;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.95) !important; // Increased opacity
+    // backdrop-filter: blur(20px); // DISABLED FOR PERFORMANCE
+    // -webkit-backdrop-filter: blur(20px); // DISABLED FOR PERFORMANCE
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -335,9 +335,9 @@ body {
 
     // Dropdown Glassmorphism
     .dropdown-menu {
-        background: rgba(255, 255, 255, 0.8) !important;
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.95) !important; // Solid background for perf
+        // backdrop-filter: blur(20px); // DISABLED FOR PERFORMANCE
+        // -webkit-backdrop-filter: blur(20px); // DISABLED FOR PERFORMANCE
         border: 1px solid rgba(255, 255, 255, 0.4);
         border-radius: 1.25rem;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);

@@ -24,7 +24,7 @@ const NotFound = () => {
 
               {/* Error Message */}
               <h2 className="mb-3">Page Not Found</h2>
-              <p className="lead mb-4 text-muted">
+              <p className="lead mb-4 text-dark">
                 We couldn't find the page you're looking for. It may have been moved or doesn't exist.
               </p>
 

@@ -115,23 +115,25 @@ const About = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="display-5 fw-bold mb-4">
-                  Our <span className="text-gradient">Story</span>
-                </h2>
-                <div className="lead text-muted mb-4" style={{ whiteSpace: 'pre-wrap' }}>
-                  {churchInfo.about_story}
+                <div className="glass-panel bg-white p-4 shadow-sm rounded-4 mb-4 border-0">
+                  <h2 className="display-5 fw-bold mb-4">
+                    Our <span className="text-gradient">Story</span>
+                  </h2>
+                  <div className="lead text-dark mb-0" style={{ whiteSpace: 'pre-wrap' }}>
+                    {churchInfo.about_story}
+                  </div>
                 </div>
               </motion.div>
             </Col>
             <Col lg={6}>
               <motion.div
-                className="glass-panel p-5 text-center"
+                className="glass-panel bg-white p-4 shadow-sm rounded-4 border-0 text-center"
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
               >
                 <h3 className="h2 mb-4 text-gradient">Our Mission</h3>
-                <p className="lead text-muted mb-0">
+                <p className="lead text-dark mb-0">
                   {churchInfo.about_mission}
                 </p>
               </motion.div>
@@ -145,23 +147,20 @@ const About = () => {
         <Container>
             <Row className="justify-content-center">
                 <Col lg={10} className="text-center">
-                     <motion.h2 
-                        className="display-5 fw-bold mb-4"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                      >
-                        Our <span className="text-gradient">Vision</span>
-                      </motion.h2>
-                      <motion.p 
-                        className="lead text-muted"
+                      <motion.div 
+                        className="glass-panel bg-white p-4 shadow-sm rounded-4 d-inline-block border-0"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
                       >
-                        {churchInfo.about_vision}
-                      </motion.p>
+                        <h2 className="display-5 fw-bold mb-4">
+                          Our <span className="text-gradient">Vision</span>
+                        </h2>
+                        <p className="lead text-dark mb-0">
+                          {churchInfo.about_vision}
+                        </p>
+                      </motion.div>
                 </Col>
             </Row>
         </Container>
@@ -224,12 +223,14 @@ const About = () => {
         <Container>
           <Row className="text-center mb-5">
             <Col>
-              <h2 className="display-5 fw-bold mb-3">
-                Our <span className="text-gradient">Leadership</span>
-              </h2>
-              <p className="lead text-muted">
-                Meet the team dedicated to serving our church family
-              </p>
+              <div className="glass-panel bg-white p-4 shadow-sm rounded-4 d-inline-block border-0">
+                <h2 className="display-5 fw-bold mb-3">
+                  Our <span className="text-gradient">Leadership</span>
+                </h2>
+                <p className="lead text-dark mb-0">
+                  Meet the team dedicated to serving our church family
+                </p>
+              </div>
             </Col>
           </Row>
 
