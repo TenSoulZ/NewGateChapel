@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 
 import { Link } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
