@@ -212,7 +212,7 @@ const Contact = () => {
                 <Form onSubmit={handleSubmit}>
                   <Row className="g-3">
                     <Col md={6}>
-                      <Form.Group>
+                      <Form.Group controlId="formName">
                         <Form.Label>Name *</Form.Label>
                         <Form.Control
                           type="text"
@@ -221,12 +221,13 @@ const Contact = () => {
                           onChange={handleChange}
                           required
                           placeholder="Your name"
+                          autoComplete="name"
                           disabled={isSubmitting}
                         />
                       </Form.Group>
                     </Col>
                     <Col md={6}>
-                      <Form.Group>
+                      <Form.Group controlId="formEmail">
                         <Form.Label>Email *</Form.Label>
                         <Form.Control
                           type="email"
@@ -235,12 +236,13 @@ const Contact = () => {
                           onChange={handleChange}
                           required
                           placeholder="your.email@example.com"
+                          autoComplete="email"
                           disabled={isSubmitting}
                         />
                       </Form.Group>
                     </Col>
                     <Col md={12}>
-                      <Form.Group>
+                      <Form.Group controlId="formPhone">
                         <Form.Label>Phone</Form.Label>
                         <Form.Control
                           type="tel"
@@ -248,12 +250,13 @@ const Contact = () => {
                           value={formData.phone}
                           onChange={handleChange}
                           placeholder="+263 71 233 2632"
+                          autoComplete="tel"
                           disabled={isSubmitting}
                         />
                       </Form.Group>
                     </Col>
                     <Col md={12}>
-                      <Form.Group>
+                      <Form.Group controlId="formSubject">
                         <Form.Label>Subject *</Form.Label>
                         <Form.Control
                           type="text"
@@ -262,12 +265,13 @@ const Contact = () => {
                           onChange={handleChange}
                           required
                           placeholder="What is this regarding?"
+                          autoComplete="off"
                           disabled={isSubmitting}
                         />
                       </Form.Group>
                     </Col>
                     <Col md={12}>
-                      <Form.Group>
+                      <Form.Group controlId="formMessage">
                         <Form.Label>Message *</Form.Label>
                         <Form.Control
                           as="textarea"
@@ -277,6 +281,7 @@ const Contact = () => {
                           onChange={handleChange}
                           required
                           placeholder="Your message..."
+                          autoComplete="off"
                           disabled={isSubmitting}
                         />
                       </Form.Group>

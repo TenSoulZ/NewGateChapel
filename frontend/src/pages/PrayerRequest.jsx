@@ -155,19 +155,19 @@ const PrayerRequest = () => {
                     <Form onSubmit={handleSubmit}>
                       <Row className="g-3">
                         <Col md={6}>
-                          <Form.Group className="mb-3">
+                          <Form.Group className="mb-3" controlId="prayerName">
                             <Form.Label className="small fw-bold">Name</Form.Label>
-                            <Form.Control type="text" name="name" value={formData.name} onChange={handleChange} required disabled={isSubmitting} />
+                            <Form.Control type="text" name="name" value={formData.name} onChange={handleChange} required autoComplete="name" disabled={isSubmitting} />
                           </Form.Group>
                         </Col>
                         <Col md={6}>
-                          <Form.Group className="mb-3">
+                          <Form.Group className="mb-3" controlId="prayerEmail">
                             <Form.Label className="small fw-bold">Email</Form.Label>
-                            <Form.Control type="email" name="email" value={formData.email} onChange={handleChange} required disabled={isSubmitting} />
+                            <Form.Control type="email" name="email" value={formData.email} onChange={handleChange} required autoComplete="email" disabled={isSubmitting} />
                           </Form.Group>
                         </Col>
                         <Col md={12}>
-                          <Form.Group className="mb-3">
+                          <Form.Group className="mb-3" controlId="prayerType">
                             <Form.Label className="small fw-bold">Type of Request</Form.Label>
                             <Form.Select name="requestType" value={formData.requestType} onChange={handleChange} required disabled={isSubmitting}>
                               {requestTypes.map(t => <option key={t.value} value={t.value}>{t.label}</option>)}
@@ -175,14 +175,14 @@ const PrayerRequest = () => {
                           </Form.Group>
                         </Col>
                         <Col md={12}>
-                          <Form.Group className="mb-3">
+                          <Form.Group className="mb-3" controlId="prayerRequestContent">
                             <Form.Label className="small fw-bold">Your Prayer Request</Form.Label>
-                            <Form.Control as="textarea" rows={4} name="prayerRequest" value={formData.prayerRequest} onChange={handleChange} required placeholder="Tell us how we can pray..." disabled={isSubmitting} />
+                            <Form.Control as="textarea" rows={4} name="prayerRequest" value={formData.prayerRequest} onChange={handleChange} required placeholder="Tell us how we can pray..." autoComplete="off" disabled={isSubmitting} />
                           </Form.Group>
                         </Col>
                         <Col md={12}>
-                          <Form.Group className="mb-4">
-                            <Form.Check type="checkbox" name="isConfidential" checked={formData.isConfidential} onChange={handleChange} label={<small className="text-muted">Keep this request confidential (pastoral team only)</small>} disabled={isSubmitting} />
+                          <Form.Group className="mb-4" controlId="prayerConfidential">
+                            <Form.Check type="checkbox" id="prayerConfidentialCheck" name="isConfidential" checked={formData.isConfidential} onChange={handleChange} label={<small className="text-muted">Keep this request confidential (pastoral team only)</small>} disabled={isSubmitting} />
                           </Form.Group>
                         </Col>
                         <Col md={12}>
