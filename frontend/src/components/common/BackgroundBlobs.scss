@@ -13,7 +13,9 @@
     position: absolute;
     border-radius: 50%;
     will-change: transform;
-    transform: translate3d(0, 0, 0);
+    transform: translateZ(0); // Force hardware acceleration
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 .bg-blob-1 {
@@ -22,7 +24,8 @@
     width: 500px;
     height: 500px;
     background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
-    filter: blur(80px);
+    filter: blur(40px); // Reduced from 80px
+    opacity: 0.8;
     animation: float-1 20s ease-in-out infinite;
 }
 
@@ -32,7 +35,8 @@
     width: 600px;
     height: 600px;
     background: radial-gradient(circle, rgba(160, 2, 92, 0.1) 0%, transparent 70%);
-    filter: blur(100px);
+    filter: blur(50px); // Reduced from 100px
+    opacity: 0.8;
     animation: float-2 25s ease-in-out infinite;
 }
 
@@ -42,7 +46,8 @@
     width: 400px;
     height: 400px;
     background: radial-gradient(circle, rgba(0, 40, 85, 0.1) 0%, transparent 70%);
-    filter: blur(90px);
+    filter: blur(45px); // Reduced from 90px
+    opacity: 0.8;
     animation: float-3 30s ease-in-out infinite;
 }
 

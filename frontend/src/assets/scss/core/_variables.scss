@@ -51,8 +51,8 @@ $glass-bg-dark: rgba(15, 23, 42, 0.7);
 $glass-bg-panel-dark: rgba(15, 23, 42, 0.6); // Darker base for bright text visibility
 $glass-border-light: rgba(255, 255, 255, 0.5);
 $glass-border-dark: rgba(255, 255, 255, 0.1);
-$glass-blur: 12px;
-$glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); // Darker shadow for better lift
+$glass-blur: 8px; // Reduced from 12px for performance
+$glass-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.15); // Simplified shadow
 
 // Bootstrap Overrides
 $enable-rounded: true;

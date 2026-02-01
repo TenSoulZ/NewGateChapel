@@ -65,15 +65,28 @@ const Hero = ({
       className="hero-section position-relative d-flex align-items-center" 
       style={{ 
         minHeight: '85vh', 
-        background: backgroundImage 
-          ? `${backgroundGradient}, url(${backgroundImage})`
-          : backgroundGradient,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundAttachment: 'fixed',
-        marginTop: '-80px' // Adjust for navbar overlap
+        marginTop: '-80px', // Adjust for navbar overlap
+        overflow: 'hidden'
       }}
     >
+      {/* Optimized Fixed Background */}
+      <div 
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: -1,
+          background: backgroundImage 
+            ? `${backgroundGradient}, url(${backgroundImage})`
+            : backgroundGradient,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          willChange: 'transform', // Hint to browser for optimization
+          pointerEvents: 'none'
+        }}
+      />
       <Container className="position-relative" style={{ zIndex: 2 }}>
         <Row className="align-items-center justify-content-center">
           <Col lg={10} xl={9} className="text-center">

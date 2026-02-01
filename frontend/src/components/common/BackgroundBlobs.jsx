@@ -1,7 +1,7 @@
 import React from 'react';
 import './BackgroundBlobs.scss';
 
-const BackgroundBlobs = () => {
+const BackgroundBlobs = React.memo(() => {
   return (
     <div className="background-blobs-container">
       {/* Blob 1 - Cyan */}
@@ -14,6 +14,6 @@ const BackgroundBlobs = () => {
       <div className="bg-blob bg-blob-3" />
     </div>
   );
-};
+});
 
 export default BackgroundBlobs;
