@@ -36,8 +36,8 @@ class Event(models.Model):
         updated_at: Auto-updated on modification
     """
     title = models.CharField(max_length=200, db_index=True)
-    date = models.DateTimeField(db_index=True)  # Changed from CharField for better querying
-    time = models.TimeField(null=True, blank=True)  # Separate time field
+    date = models.DateField(db_index=True)  # Changed to DateField
+    time = models.CharField(max_length=100, null=True, blank=True)  # Changed to CharField for flexibility (e.g. "All Day")
     location = models.CharField(max_length=200)
     category = models.CharField(max_length=100, db_index=True)
     description = models.TextField()
@@ -73,7 +73,7 @@ class Sermon(models.Model):
         image: Optional sermon thumbnail
     """
     title = models.CharField(max_length=200, db_index=True)
-    date = models.DateTimeField(db_index=True)  # Changed from CharField
+    date = models.DateField(db_index=True)  # Changed to DateField
     speaker = models.CharField(max_length=100, db_index=True)
     description = models.TextField()
     series = models.CharField(max_length=200, blank=True, null=True, db_index=True)
@@ -178,7 +178,7 @@ class ServiceSchedule(models.Model):
         order: Manual sort order
     """
     day = models.CharField(max_length=50, db_index=True)
-    time = models.TimeField()  # Changed from CharField
+    time = models.CharField(max_length=100)  # Changed to CharField for "10:00 AM" format support
     timezone = models.CharField(max_length=50, default='America/New_York')
     type = models.CharField(max_length=200, db_index=True)
     description = models.TextField(blank=True)

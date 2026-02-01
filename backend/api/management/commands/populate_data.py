@@ -8,10 +8,16 @@ class Command(BaseCommand):
         self.stdout.write('Populating data...')
 
         # Events
+        from datetime import datetime
+        def parse_date(date_str):
+            if '-' in date_str: # Range like June 10-14, 2026
+                date_str = date_str.split('-')[0].strip() + ', ' + date_str.split(',')[-1].strip()
+            return datetime.strptime(date_str, '%B %d, %Y').date()
+
         events_data = [
             {
                 'title': 'Easter Sunday Celebration',
-                'date': 'April 20, 2026',
+                'date': parse_date('April 20, 2026'),
                 'time': '9:00 AM',
                 'location': 'Main Sanctuary',
                 'category': 'Special Service',
@@ -19,7 +25,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Community Outreach Day',
-                'date': 'May 15, 2026',
+                'date': parse_date('May 15, 2026'),
                 'time': '10:00 AM - 4:00 PM',
                 'location': 'City Park',
                 'category': 'Outreach',
@@ -27,7 +33,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Youth Summer Camp',
-                'date': 'June 10-14, 2026',
+                'date': parse_date('June 10-14, 2026'), # Logic handles the range start
                 'time': 'All Day',
                 'location': 'Mountain Retreat Center',
                 'category': 'Youth',
@@ -35,7 +41,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Marriage Enrichment Workshop',
-                'date': 'July 8, 2026',
+                'date': parse_date('July 8, 2026'),
                 'time': '6:00 PM - 9:00 PM',
                 'location': 'Fellowship Hall',
                 'category': 'Workshop',
@@ -43,7 +49,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Back to School Blessing',
-                'date': 'August 25, 2026',
+                'date': parse_date('August 25, 2026'),
                 'time': '10:00 AM',
                 'location': 'Main Sanctuary',
                 'category': 'Special Service',
@@ -51,7 +57,7 @@ class Command(BaseCommand):
             },
             {
                 'title': 'Fall Festival',
-                'date': 'October 31, 2026',
+                'date': parse_date('October 31, 2026'),
                 'time': '5:00 PM - 8:00 PM',
                 'location': 'Church Grounds',
                 'category': 'Family Event',
@@ -60,14 +66,14 @@ class Command(BaseCommand):
         ]
 
         for data in events_data:
-            Event.objects.get_or_create(title=data['title'], defaults=data)
+            Event.objects.update_or_create(title=data['title'], defaults=data)
         self.stdout.write(f'Created {len(events_data)} events')
 
         # Sermons
         sermons_data = [
             {
                 'title': "Walking in Faith",
-                'date': "December 10, 2023",
+                'date': parse_date("December 10, 2023"),
                 'speaker': "Pastor Erasmus Makarimayi",
                 'description': "Exploring how faith guides us through life's challenges and uncertainties.",
                 'series': "Living Faith Series",
@@ -76,7 +82,7 @@ class Command(BaseCommand):
             },
             {
                 'title': "The Power of Prayer",
-                'date': "December 3, 2023",
+                'date': parse_date("December 3, 2023"),
                 'speaker': "Pastor Erasmus Makarimayi",
                 'description': "Understanding prayer as our direct line of communication with God.",
                 'series': "Living Faith Series",
@@ -84,7 +90,7 @@ class Command(BaseCommand):
             },
             {
                 'title': "Love in Action",
-                'date': "November 26, 2023",
+                'date': parse_date("November 26, 2023"),
                 'speaker': "Pastor Erasmus Makarimayi",
                 'description': "How we can demonstrate God's love through our daily actions and choices.",
                 'series': "Living Faith Series",
@@ -93,7 +99,7 @@ class Command(BaseCommand):
         ]
 
         for data in sermons_data:
-            Sermon.objects.get_or_create(title=data['title'], defaults=data)
+            Sermon.objects.update_or_create(title=data['title'], defaults=data)
         self.stdout.write(f'Created {len(sermons_data)} sermons')
 
         # Ministries
