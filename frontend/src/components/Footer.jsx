@@ -14,7 +14,8 @@
  * @component
  */
 
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FaFacebook, FaTwitter, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'
 import api from '../services/api'
@@ -92,15 +93,15 @@ const Footer = () => {
           <Col md={3} className="mb-3">
             <h5>Quick Links</h5>
             <div className="d-flex flex-column gap-2">
-              <a href="/" className="footer-link">Home</a>
-              <a href="/about" className="footer-link">About Us</a>
-              <a href="/services" className="footer-link">Services</a>
-              <a href="/ministries" className="footer-link">Ministries</a>
-              <a href="/events" className="footer-link">Events</a>
-              <a href="/sermons" className="footer-link">Sermons</a>
-              <a href="/giving" className="footer-link">Give</a>
-              <a href="/contact" className="footer-link">Contact</a>
-              <a href="/admin/login" className="footer-link text-warning">Admin</a>
+              <Link to="/" className="footer-link">Home</Link>
+              <Link to="/about" className="footer-link">About Us</Link>
+              <Link to="/services" className="footer-link">Services</Link>
+              <Link to="/ministries" className="footer-link">Ministries</Link>
+              <Link to="/events" className="footer-link">Events</Link>
+              <Link to="/sermons" className="footer-link">Sermons</Link>
+              <Link to="/giving" className="footer-link">Give</Link>
+              <Link to="/contact" className="footer-link">Contact</Link>
+              <Link to="/admin/login" className="footer-link text-warning">Admin</Link>
             </div>
           </Col>
           
