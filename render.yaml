@@ -19,6 +19,19 @@ services:
           name: newgate-db
           property: connectionString
 
+  - type: static
+    name: newgate-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    envVars:
+      - key: VITE_API_BASE_URL
+        value:  # UPDATE THIS with your actual backend URL
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+
 databases:
   - name: newgate-db
     plan: free
