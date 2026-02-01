@@ -28,7 +28,7 @@ services:
     publishDir: dist
     envVars:
       - key: VITE_API_BASE_URL
-        value: https://newgate-backend.onrender.com
+        value: https://newgate-backend.onrender.com/api
     routes:
       - type: rewrite
         source: /*
