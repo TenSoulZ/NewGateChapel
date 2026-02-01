@@ -1,0 +1,63 @@
+// New Gate Chapel Brand Palette (From Logo)
+// Cyan/Turquoise Blues (Left side of logo)
+$brand-cyan-bright: #00D4FF; // Bright cyan
+$brand-cyan: #00B8E6; // Medium cyan
+$brand-turquoise: #00A0D1; // Turquoise
+$brand-blue: #0088BF; // Deep turquoise blue
+
+// Deep Blues (Bottom of logo)
+$brand-navy: #003D7A; // Navy blue
+$brand-deep-blue: #002855; // Deep navy
+$brand-midnight: #001840; // Midnight blue
+
+// Red to Purple Gradient (Right side of logo)
+$brand-red: #E60012; // Bright red
+$brand-crimson: #C8102E; // Crimson
+$brand-magenta: #A0025C; // Magenta
+$brand-purple: #6B1B7F; // Purple
+$brand-deep-purple: #3C1053; // Deep purple
+$brand-violet: #2A0845; // Violet
+
+// Surface Colors
+$surface-50: #F8FAFC;
+$surface-100: #FFFFFF;
+$surface-200: #F1F5F9;
+$surface-300: #E2E8F0;
+$surface-800: #1E293B;
+$surface-900: #0F172A;
+
+// Semantic Colors (Using logo colors)
+$primary: $brand-blue; // Main brand color
+$primary-light: $brand-cyan-bright;
+$secondary: $brand-deep-blue;
+$highlight: $brand-cyan;
+$accent: $brand-magenta;
+$danger: $brand-red;
+$warning: #FFB703;
+
+$body-bg: $surface-50;
+$text-main: $surface-900;
+$text-muted: #64748B;
+$text-light: #F8FAFC;
+
+// Typography
+$font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+$font-family-display: 'Outfit', $font-family-base;
+
+
+// Glassmorphism System
+$glass-bg-light: rgba(255, 255, 255, 0.7);
+$glass-bg-dark: rgba(15, 23, 42, 0.7);
+$glass-bg-panel-dark: rgba(15, 23, 42, 0.6); // Darker base for bright text visibility
+$glass-border-light: rgba(255, 255, 255, 0.5);
+$glass-border-dark: rgba(255, 255, 255, 0.1);
+$glass-blur: 12px;
+$glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2); // Darker shadow for better lift
+
+// Bootstrap Overrides
+$enable-rounded: true;
+$enable-shadows: true;
+$enable-gradients: false;
+$font-family-sans-serif: $font-family-base;
+$headings-font-family: $font-family-display;
+$headings-font-weight: 700;

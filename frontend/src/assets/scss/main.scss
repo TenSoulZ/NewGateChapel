@@ -1,0 +1,618 @@
+@import "core/variables";
+@import "bootstrap/scss/bootstrap";
+@import "skeleton";
+
+// Global Styles
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+
+    // Optimize scroll performance
+    @media (prefers-reduced-motion: no-preference) {
+        scroll-behavior: smooth;
+    }
+}
+
+// Accessibility: Global Focus States
+:focus-visible {
+    outline: 2px solid $brand-cyan-bright;
+    outline-offset: 2px;
+}
+
+// Ensure focus is visible on glass panels
+.glass-panel:focus-visible,
+.btn:focus-visible,
+a:focus-visible {
+    box-shadow: 0 0 0 3px rgba($brand-cyan-bright, 0.5) !important;
+    outline: none !important;
+}
+
+body {
+    font-family: $font-family-base;
+    background-color: $body-bg;
+    color: $text-main;
+    -webkit-font-smoothing: antialiased;
+    // Improve scroll performance
+    overflow-x: hidden;
+}
+
+// Utilities
+.glass-panel {
+    background: $glass-bg-light;
+    backdrop-filter: blur($glass-blur);
+    -webkit-backdrop-filter: blur($glass-blur);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+        0 8px 32px 0 rgba(0, 0, 0, 0.1),
+        inset 0 0 20px rgba(255, 255, 255, 0.4);
+    border-radius: 2rem;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    position: relative;
+    z-index: 1;
+
+    // Optimize for performance - only use will-change on hover
+    contain: layout style;
+
+    &:hover {
+        will-change: transform;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        border-radius: 2rem;
+        padding: 1px;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), transparent 50%, rgba(255, 255, 255, 0.2));
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        pointer-events: none;
+    }
+
+    // Auto-darken when white text is used for better contrast
+    &.text-white,
+    &.text-light {
+        background: rgba(0, 40, 85, 0.3);
+        border-color: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.4);
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6 {
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            color: white !important;
+        }
+
+        .lead,
+        p,
+        span:not(.badge) {
+            color: rgba(255, 255, 255, 0.9) !important;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    &.glass-panel-dark {
+        background: rgba(10, 15, 30, 0.95) !important;
+        border-color: rgba(255, 255, 255, 0.1) !important;
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7) !important;
+        backdrop-filter: blur(20px) !important;
+
+        &::after {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 50%, rgba(255, 255, 255, 0.02)) !important;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .h1,
+        .h2,
+        .h3,
+        .h4,
+        .h5,
+        .h6 {
+            color: #ffffff !important;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        p,
+        span,
+        td,
+        th {
+            color: rgba(255, 255, 255, 0.95) !important;
+        }
+
+        .text-muted,
+        .opacity-50 {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+
+        // Force high contrast for tables in dark panels
+        .table {
+            --bs-table-bg: transparent !important;
+            --bs-table-accent-bg: rgba(255, 255, 255, 0.03) !important;
+            --bs-table-striped-bg: rgba(255, 255, 255, 0.03) !important;
+            --bs-table-hover-bg: rgba(255, 255, 255, 0.05) !important;
+            --bs-table-color: rgba(255, 255, 255, 0.9) !important;
+            --bs-table-border-color: rgba(255, 255, 255, 0.1) !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+
+            thead th {
+                background: rgba(255, 255, 255, 0.05) !important;
+                border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+                color: rgba(255, 255, 255, 0.7) !important;
+                font-weight: 600;
+                text-transform: uppercase;
+                font-size: 0.75rem;
+                letter-spacing: 0.05em;
+            }
+
+            td {
+                background: transparent !important;
+                border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+            }
+        }
+
+        // High contrast progress bars
+        .progress {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+
+            .progress-bar {
+                box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+            }
+        }
+    }
+}
+
+// Global Admin Portal & Modal Form Styles
+.admin-portal,
+.admin-modal,
+.admin-login-page,
+.admin-register-page {
+
+    .form-control,
+    .form-select {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        color: #ffffff !important;
+        border-radius: 0.75rem;
+        padding: 0.75rem 1rem;
+        transition: all 0.2s ease;
+
+        &:focus {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            border-color: rgba($primary, 0.8) !important;
+            box-shadow: 0 0 0 0.25rem rgba($primary, 0.2) !important;
+            color: #ffffff !important;
+        }
+
+        &::placeholder {
+            color: rgba(255, 255, 255, 0.3) !important;
+        }
+
+        // Dropdown options
+        option {
+            background-color: #1a1f35 !important;
+            color: #ffffff !important;
+            padding: 10px;
+        }
+    }
+
+    .form-label,
+    label {
+        color: rgba(255, 255, 255, 0.7) !important;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.02em;
+    }
+
+    .form-check-input {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+
+        &:checked {
+            background-color: $primary !important;
+            border-color: $primary !important;
+        }
+    }
+
+    // Fix for legacy bg-white classes in components
+    .bg-white.bg-opacity-5,
+    .bg-white.bg-opacity-10 {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        color: white !important;
+    }
+}
+
+// Logo-inspired text gradient with shimmer
+.text-gradient {
+    background: linear-gradient(135deg,
+            $brand-cyan-bright 0%,
+            $brand-blue 25%,
+            $brand-magenta 50%,
+            $brand-blue 75%,
+            $brand-cyan-bright 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    will-change: background-position;
+    animation: shine 8s linear infinite;
+
+    // Respect user motion preferences
+    @media (prefers-reduced-motion: reduce) {
+        animation: none;
+        background-size: 100% auto;
+    }
+}
+
+@keyframes shine {
+    to {
+        background-position: 200% center;
+    }
+}
+
+// Logo-inspired gradient backgrounds
+.bg-gradient-logo {
+    background: linear-gradient(135deg, $brand-cyan-bright 0%, $brand-turquoise 25%, $brand-blue 50%, $brand-deep-blue 75%, $brand-navy 100%);
+}
+
+.bg-gradient-logo-full {
+    background: linear-gradient(135deg,
+            $brand-cyan-bright 0%,
+            $brand-cyan 15%,
+            $brand-blue 30%,
+            $brand-navy 50%,
+            $brand-purple 70%,
+            $brand-magenta 85%,
+            $brand-red 100%);
+}
+
+.bg-gradient-red-purple {
+    background: linear-gradient(135deg, $brand-red 0%, $brand-crimson 25%, $brand-magenta 50%, $brand-purple 75%, $brand-deep-purple 100%);
+}
+
+.bg-gradient-cyan-blue {
+    background: linear-gradient(135deg, $brand-cyan-bright 0%, $brand-cyan 33%, $brand-blue 66%, $brand-deep-blue 100%);
+}
+
+.section-padding {
+    padding: 6rem 0;
+}
+
+// Navbar Glass Effect
+.navbar-glass {
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 1.25rem 0;
+
+    &.scrolled {
+        padding: 0.85rem 0;
+        background: rgba(255, 255, 255, 0.9) !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border-bottom: 1px solid rgba($primary, 0.1);
+    }
+
+    .nav-link {
+        color: $surface-800 !important;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        padding: 0.5rem 1.25rem !important;
+        margin: 0 0.25rem;
+        border-radius: 100px;
+        transition: all 0.3s ease;
+        position: relative;
+
+        &:hover,
+        &.active {
+            color: $primary !important;
+            background-color: rgba($primary, 0.08);
+        }
+    }
+
+    // Dropdown Glassmorphism
+    .dropdown-menu {
+        background: rgba(255, 255, 255, 0.8) !important;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 1.25rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        padding: 0.75rem;
+        margin-top: 0.5rem;
+        animation: dropdownFade 0.3s ease;
+
+        .dropdown-item {
+            border-radius: 0.75rem;
+            padding: 0.6rem 1.25rem;
+            font-weight: 500;
+            color: $surface-800;
+            transition: all 0.2s ease;
+
+            &:hover {
+                background: rgba($primary, 0.08);
+                color: $primary;
+                transform: translateX(5px);
+            }
+
+            &:active {
+                background: $primary;
+                color: white;
+            }
+        }
+
+        .dropdown-divider {
+            border-top: 1px solid rgba($primary, 0.05);
+            margin: 0.5rem 0;
+        }
+    }
+
+    // Active state for dropdown trigger
+    .nav-item.dropdown.active .nav-link {
+        color: $primary !important;
+        background-color: rgba($primary, 0.08);
+    }
+}
+
+@keyframes dropdownFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// Card Hover Effects
+.hover-lift {
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12) !important;
+    }
+
+    // Respect user motion preferences
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+
+        &:hover {
+            transform: none;
+        }
+    }
+}
+
+// Hero Section
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    padding: 10rem 0 8rem;
+
+    .glass-panel {
+        background: $glass-bg-panel-dark;
+        border-color: $glass-border-dark;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+
+        // Text visibility refinements
+        h1,
+        h2,
+        h3,
+        .h1,
+        .h2,
+        .h3 {
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .lead,
+        p {
+            color: rgba(255, 255, 255, 0.9) !important;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at center, rgba($brand-cyan-bright, 0.1) 0%, transparent 60%),
+            radial-gradient(circle at 70% 30%, rgba($brand-magenta, 0.08) 0%, transparent 50%);
+        animation: rotateGradient 40s linear infinite;
+        z-index: 1;
+        pointer-events: none;
+    }
+}
+
+@keyframes rotateGradient {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// Disable animations for users who prefer reduced motion
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+// Footer Styles
+.footer {
+    background-color: $surface-900;
+    color: rgba(255, 255, 255, 0.85) !important;
+    padding-top: 4rem;
+    padding-bottom: 2rem;
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+
+    h5 {
+        color: white !important;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+    }
+
+    p {
+        color: rgba(255, 255, 255, 0.85) !important;
+    }
+
+    a {
+        color: rgba(255, 255, 255, 0.8) !important;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+            color: $brand-cyan-bright !important;
+            padding-left: 5px;
+        }
+    }
+
+    // Override Bootstrap text utility classes
+    .text-light {
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+    .text-decoration-none {
+        text-decoration: none !important;
+    }
+
+    .small {
+        color: rgba(255, 255, 255, 0.8) !important;
+    }
+
+    .opacity-75 {
+        opacity: 0.75 !important;
+        color: rgba(255, 255, 255, 0.75) !important;
+    }
+
+    hr {
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    // Ensure all icons are visible
+    .fa,
+    .fas,
+    .far,
+    .fab,
+    svg {
+        color: rgba(255, 255, 255, 0.75) !important;
+    }
+
+    // Footer navigation links
+    .footer-link {
+        color: rgba(255, 255, 255, 0.8) !important;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        font-size: 0.9rem;
+
+        &:hover {
+            color: $brand-cyan-bright !important;
+            transform: translateX(5px);
+        }
+
+        // Admin link with warning color
+        &.text-warning {
+            color: $warning !important;
+            font-weight: 600;
+
+            &:hover {
+                color: lighten($warning, 10%) !important;
+            }
+        }
+    }
+}
+
+// Button Enhancements
+.btn {
+    border-radius: 100px;
+    padding: 0.8rem 2rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border: none;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: 0.5s;
+    }
+
+    &:hover {
+        transform: translateY(-3px);
+
+        &::after {
+            left: 100%;
+        }
+    }
+
+    &:active {
+        transform: translateY(-1px);
+    }
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, $brand-blue 0%, $brand-deep-blue 100%);
+    box-shadow: 0 8px 20px rgba($brand-blue, 0.25);
+
+    &:hover {
+        background: linear-gradient(135deg, $brand-cyan 0%, $brand-blue 100%);
+        box-shadow: 0 12px 25px rgba($brand-blue, 0.4);
+    }
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, $brand-magenta 0%, $brand-purple 100%);
+    color: white;
+    box-shadow: 0 8px 20px rgba($brand-magenta, 0.25);
+
+    &:hover {
+        background: linear-gradient(135deg, $brand-red 0%, $brand-magenta 100%);
+        color: white;
+        box-shadow: 0 12px 25px rgba($brand-magenta, 0.4);
+    }
+}

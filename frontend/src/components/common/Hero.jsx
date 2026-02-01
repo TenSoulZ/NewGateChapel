@@ -1,0 +1,155 @@
+/**
+ * Hero Component - Full-width hero section with glassmorphism design
+ * 
+ * Displays a prominent hero banner at the top of pages with:
+ * - Animated entrance effects using Framer Motion
+ * - Glassmorphism panel design with blur effect
+ * - Customizable background (gradient and/or image)
+ * - Optional primary and secondary action buttons
+ * - Organic wave decoration at bottom
+ * - Parallax background effect (fixed attachment)
+ * 
+ * @component
+ * @param {Object} props - Component props
+ * @param {string|JSX.Element} props.title - Main heading (can include JSX for styling) 
+ * @param {string} [props.subtitle] - Optional uppercase subtitle text
+ * @param {string} [props.description] - Optional description paragraph
+ * @param {Object} [props.primaryButton] - Primary action button {text, href}
+ * @param {Object} [props.secondaryButton] - Secondary action button {text, href}
+ * @param {string} [props.backgroundImage] - Optional background image URL
+ * @param {string} [props.backgroundGradient] - CSS gradient (default: blue gradient)
+ * 
+ * @example
+ * <Hero
+ *   title="Welcome Home"
+ *   subtitle="New Gate Chapel"
+ *   description="Join us for worship"
+ *   primaryButton={{text: "Visit Us", href: "/contact"}}
+ * />
+ */
+import React from 'react';
+import { Container, Row, Col, Button } from 'react-bootstrap';
+import { motion } from 'framer-motion';
+
+const Hero = ({ 
+  title, 
+  subtitle, 
+  description, 
+  primaryButton, 
+  secondaryButton,
+  backgroundImage,
+  backgroundGradient = 'linear-gradient(135deg, rgba(0, 119, 182, 0.8) 0%, rgba(3, 4, 94, 0.9) 100%)'
+}) => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { duration: 0.8, ease: "easeOut" }
+    }
+  };
+
+  return (
+    <section 
+      className="hero-section position-relative d-flex align-items-center" 
+      style={{ 
+        minHeight: '85vh', 
+        background: backgroundImage 
+          ? `${backgroundGradient}, url(${backgroundImage})`
+          : backgroundGradient,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed',
+        marginTop: '-80px' // Adjust for navbar overlap
+      }}
+    >
+      <Container className="position-relative" style={{ zIndex: 2 }}>
+        <Row className="align-items-center justify-content-center">
+          <Col lg={10} xl={9} className="text-center">
+            <motion.div
+              className="glass-panel p-5 p-md-5 mx-auto text-white shadow-lg"
+              style={{ maxWidth: '900px' }}
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {subtitle && (
+                <motion.p 
+                  className="text-warning text-uppercase fw-bold mb-3"
+                  variants={itemVariants}
+                  style={{ letterSpacing: '3px', fontSize: '0.9rem' }}
+                >
+                  {subtitle}
+                </motion.p>
+              )}
+              
+              <motion.h1 
+                className="display-2 fw-bold text-white mb-4"
+                variants={itemVariants}
+                style={{ lineHeight: 1.1, textShadow: '0 4px 12px rgba(0,0,0,0.3)' }}
+              >
+                {title}
+              </motion.h1>
+              
+              {description && (
+                <motion.p 
+                  className="lead text-light mb-5 mx-auto opacity-75" 
+                  style={{ maxWidth: '700px', lineHeight: 1.6 }}
+                  variants={itemVariants}
+                >
+                  {description}
+                </motion.p>
+              )}
+              
+              <motion.div 
+                className="d-flex gap-3 justify-content-center flex-wrap"
+                variants={itemVariants}
+              >
+                {primaryButton && (
+                  <Button 
+                    variant="primary" 
+                    size="lg" 
+                    className="px-5 shadow-lg fw-bold"
+                    href={primaryButton.href}
+                  >
+                    {primaryButton.text}
+                  </Button>
+                )}
+                {secondaryButton && (
+                  <Button 
+                    variant="outline-light" 
+                    size="lg" 
+                    className="px-5 rounded-pill fw-bold"
+                    href={secondaryButton.href}
+                  >
+                    {secondaryButton.text}
+                  </Button>
+                )}
+              </motion.div>
+            </motion.div>
+          </Col>
+        </Row>
+      </Container>
+
+      {/* Hero-specific organic shapes */}
+      <div className="position-absolute bottom-0 start-0 w-100 overflow-hidden" style={{ height: '100px', pointerEvents: 'none' }}>
+        <svg viewBox="0 0 1200 120" preserveAspectRatio="none" style={{ position: 'relative', display: 'block', width: 'calc(100% + 1.3px)', height: '100px' }}>
+          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" fill="#F8FAFC" style={{ opacity: 0.1 }}></path>
+        </svg>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

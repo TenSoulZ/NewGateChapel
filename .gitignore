@@ -1,0 +1,27 @@
+# General
+.DS_Store
+.vscode/
+.idea/
+*.log
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+env/
+.env
+
+# Django
+db.sqlite3
+media/
+staticfiles/
+
+# Node/Frontend
+node_modules/
+dist/
+build/
+.npm/
+.cache/
+coverage/

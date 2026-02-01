@@ -1,0 +1,8 @@
+Migrations for 'api':
+  api\migrations\0002_livestream_serviceschedule.py
+    + Create model LiveStream
+    + Create model ServiceSchedule
+Operations to perform:
+  Apply all migrations: admin, api, auth, contenttypes, sessions
+Running migrations:
+  Applying api.0002_livestream_serviceschedule... OK

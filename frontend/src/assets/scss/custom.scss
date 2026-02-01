@@ -1,0 +1,977 @@
+// Custom SCSS for New Gate Chapel
+// Usage Order:
+// 1. Variable definitions and overrides
+// 2. Bootstrap import
+// 3. Custom styles and component overrides
+
+// New Gate Chapel Brand Palette (Refined)
+// Primary: Bright and Trustworthy Cyans/Blues
+$new-gate-cyan: #00D4FF;
+$new-gate-royal: #0077B6; // Slightly darkened for better text contrast
+$new-gate-deep-blue: #03045E;
+
+// Accents: Warm and Energetic
+$new-gate-magenta: #D50078;
+$new-gate-red: #E63946;
+$new-gate-gold: #FFB703;
+
+// Neutral / Surface Colors
+$surface-50: #F8FAFC;
+$surface-100: #FFFFFF;
+$surface-200: #F1F5F9;
+$surface-300: #E2E8F0;
+$surface-800: #1E293B;
+$surface-900: #0F172A;
+
+
+
+// Initialize CSS Variables for easy JS access
+:root {
+  --primary: #{$new-gate-royal};
+  --primary-light: #{$new-gate-cyan};
+  --secondary: #{$new-gate-deep-blue};
+  --accent: #{$new-gate-magenta};
+  --surface-bg: #{$surface-50};
+  --surface-card: #{$surface-100};
+  --text-main: #{$surface-900};
+  --text-muted: #64748B;
+}
+
+// Modern Color System Map
+$primary: $new-gate-royal;
+$primary-light: $new-gate-cyan; // Added missing variable
+$secondary: $new-gate-deep-blue;
+$accent: $new-gate-magenta;
+$success: #10B981;
+$info: $new-gate-cyan;
+$warning: $new-gate-gold;
+$danger: $new-gate-red;
+$light: $surface-100;
+$dark: $surface-900;
+
+// Body & Text
+$body-bg: $surface-50;
+$body-color: $surface-900;
+
+// Typography System
+$font-family-base: 'Inter', system-ui, -apple-system, sans-serif;
+$font-size-base: 1rem; // 16px
+$line-height-base: 1.6;
+$headings-font-family: 'Outfit', $font-family-base; // Using a more display-friendly font for headings if available, else fall back
+$headings-font-weight: 700;
+$headings-color: $surface-900;
+
+// Spacing System (Refined)
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * 0.25,
+  // 4px
+  2: $spacer * 0.5,
+  // 8px
+  3: $spacer,
+  // 16px
+  4: $spacer * 1.5,
+  // 24px
+  5: $spacer * 2,
+  // 32px
+  6: $spacer * 3,
+  // 48px
+  7: $spacer * 4,
+  // 64px
+  8: $spacer * 6 // 96px
+);
+
+// Component Variables - Glassmorphism & Soft UI
+$border-radius-base: 1rem; // 16px
+$border-radius-lg: 1.5rem;
+$border-radius-sm: 0.5rem;
+
+// Soft Shadows
+$box-shadow-sm: 0 2px 4px rgba($surface-900, 0.05);
+$box-shadow: 0 4px 6px -1px rgba($surface-900, 0.1), 0 2px 4px -1px rgba($surface-900, 0.06);
+$box-shadow-lg: 0 10px 15px -3px rgba($surface-900, 0.1), 0 4px 6px -2px rgba($surface-900, 0.05);
+
+// Bootstrap Configuration
+$enable-rounded: true;
+$enable-shadows: true;
+$enable-gradients: false; // Disabling default bootstrap gradients for custom control
+$enable-responsive-font-sizes: true;
+
+// Import Bootstrap
+@import "bootstrap/scss/bootstrap";
+
+// Import animations
+@import "./animations.scss";
+
+// Logo-inspired icon variants - Refined
+.icon-cyan {
+  color: $primary-light !important;
+}
+
+.icon-light-blue {
+  color: $info !important;
+}
+
+.icon-royal {
+  color: $primary !important;
+}
+
+.icon-deep-blue {
+  color: $secondary !important;
+}
+
+.icon-navy {
+  color: darken($secondary, 10%) !important;
+}
+
+.icon-red {
+  color: $danger !important;
+}
+
+.icon-magenta {
+  color: $accent !important;
+}
+
+.icon-purple {
+  color: lighten($accent, 10%) !important;
+}
+
+.icon-deep-purple {
+  color: darken($accent, 10%) !important;
+}
+
+.icon-gold {
+  color: $warning !important;
+}
+
+.icon-green {
+  color: $success !important;
+}
+
+.icon-orange {
+  color: darken($warning, 15%) !important;
+}
+
+// Global Base Styles
+html {
+  scroll-behavior: smooth;
+  font-size: 16px; // Explicit base
+}
+
+body {
+  // padding-top: 80px; // Navbar height
+  background-color: $body-bg;
+  color: $body-color;
+  font-family: $font-family-base;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// Footer Styles
+.footer {
+  background-color: $surface-900;
+  color: $surface-300;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  font-size: 0.95rem;
+
+  h5 {
+    color: $white;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  a {
+    transition: color 0.2s ease;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary-light !important;
+    }
+  }
+
+  hr {
+    border-color: rgba($white, 0.1);
+  }
+}
+
+
+// Custom styles
+.navbar-brand {
+  font-family: $headings-font-family;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+// Hero Section - Modern & Clean
+.hero-section {
+  background: linear-gradient(135deg, $primary 0%, darken($primary, 15%) 100%);
+  color: white;
+  padding: 6rem 0;
+  position: relative;
+  overflow: hidden;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+
+  // Subtle animated mesh gradient overlay
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, rgba($info, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba($accent, 0.1) 0%, transparent 40%);
+    animation: rotateGradient 30s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// Unified Card Styles - Glassmorphism Lite
+.card {
+  border: 1px solid rgba($surface-900, 0.05);
+  background-color: $surface-100;
+  border-radius: $border-radius-base;
+  box-shadow: $box-shadow;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden;
+
+  // Subtle top accent border instead of rainbow
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: $primary;
+    transform: scaleX(0); // Hidden by default, reveal on hover
+    transition: transform 0.3s ease;
+    transform-origin: left;
+    z-index: 1;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $box-shadow-lg;
+    border-color: rgba($primary, 0.1);
+
+    &::before {
+      transform: scaleX(1);
+    }
+  }
+
+  .card-img-top {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    background-color: $surface-200;
+  }
+}
+
+// Hero Video Background Styles
+.hero-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4; // Darken video for text readability
+}
+
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba($surface-900, 0.7), rgba($surface-900, 0.4));
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  // Glass card for hero text
+  .glass-panel {
+    background: rgba($surface-900, 0.4);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: $border-radius-lg;
+    padding: 3rem;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+// Icon Styles
+.icon-primary {
+  color: $primary;
+}
+
+.icon-accent {
+  color: $accent;
+}
+
+.icon-secondary {
+  color: $secondary;
+}
+
+// Button Styles - Modern & Flat
+.btn {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.75rem 1.5rem;
+  border-radius: $border-radius-sm;
+  transition: all 0.2s ease;
+
+  &-primary {
+    background-color: $primary;
+    border-color: $primary;
+    box-shadow: 0 4px 6px rgba($primary, 0.25);
+
+    &:hover,
+    &:focus {
+      background-color: darken($primary, 5%);
+      border-color: darken($primary, 5%);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 12px rgba($primary, 0.3);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &-outline-primary {
+    color: $primary;
+    border-color: $primary;
+
+    &:hover {
+      background-color: $primary;
+      color: white;
+    }
+  }
+
+  // Custom variants matching the brand
+  &-accent {
+    @extend .btn-primary;
+    background-color: $accent;
+    border-color: $accent;
+    box-shadow: 0 4px 6px rgba($accent, 0.25);
+
+    &:hover,
+    &:focus {
+      background-color: darken($accent, 5%);
+      border-color: darken($accent, 5%);
+      box-shadow: 0 6px 12px rgba($accent, 0.3);
+    }
+  }
+}
+
+
+// Smooth scrolling
+html {
+  scroll-behavior: smooth;
+}
+
+// Page entrance animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.8);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Animation classes
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.animate-fade-in-right {
+  animation: fadeInRight 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-rotate-in {
+  animation: rotateIn 0.8s ease-out forwards;
+}
+
+// Staggered animation delays
+.animate-delay-1 {
+  animation-delay: 0.1s;
+}
+
+.animate-delay-2 {
+  animation-delay: 0.2s;
+}
+
+.animate-delay-3 {
+  animation-delay: 0.3s;
+}
+
+.animate-delay-4 {
+  animation-delay: 0.4s;
+}
+
+.animate-delay-5 {
+  animation-delay: 0.5s;
+}
+
+.animate-delay-6 {
+  animation-delay: 0.6s;
+}
+
+// Lazy Loading Styles
+.lazy-image-container {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; // 16:9 aspect ratio
+  background-color: #f8f9fa;
+  overflow: hidden;
+}
+
+.lazy-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: scale-down;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.lazy-image-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-shimmer {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 20%,
+      rgba(255, 255, 255, 0.5) 60%,
+      rgba(255, 255, 255, 0));
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+// Custom spacing for sections
+.section-padding {
+  padding: 4rem 0;
+}
+
+// Logo-inspired background sections - Refined for compatibility
+.bg-gradient-primary {
+  background: linear-gradient(135deg, $primary, darken($primary, 10%), $secondary);
+  color: white;
+}
+
+// Replaced deprecated specific gradients with generic refined ones
+.bg-gradient-secondary {
+  background: linear-gradient(135deg, $accent, darken($accent, 15%));
+  color: white;
+}
+
+.bg-gradient-accent {
+  background: linear-gradient(135deg, $toggle-red, $accent);
+  color: white;
+}
+
+// Using defined variables only
+.bg-gradient-success {
+  background: linear-gradient(135deg, $success, lighten($success, 10%));
+  color: white;
+}
+
+.bg-gradient-warning {
+  background: linear-gradient(135deg, $warning, lighten($warning, 10%));
+  color: white;
+}
+
+.bg-gradient-logo {
+  background: linear-gradient(135deg, $primary-light 0%, $primary 25%, $accent 60%, $danger 100%);
+  color: white;
+}
+
+.bg-soft-light {
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+// Glassy Navbar - Refined
+.navbar-glass {
+  background: rgba($surface-100, 0.85) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba($surface-900, 0.05);
+  box-shadow: $box-shadow-sm;
+  transition: all 0.3s ease;
+  padding: 1rem 0;
+
+  &.scrolled {
+    padding: 0.75rem 0;
+    background: rgba($surface-100, 0.95) !important;
+    box-shadow: $box-shadow;
+  }
+
+  .navbar-brand {
+    color: $primary !important;
+    font-weight: 800; // Extra bold for logo text
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .navbar-logo {
+      height: 40px;
+      width: auto;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .nav-link {
+    color: $surface-800 !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: $border-radius-sm;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &.active {
+      color: $primary !important;
+      background-color: rgba($primary, 0.05);
+    }
+  }
+
+  .navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    color: $primary;
+
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($primary, 0.2);
+    }
+  }
+}
+
+
+
+// Loader Styles
+.loader-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.loader-inline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: 200px;
+}
+
+.loader-inner {
+  text-align: center;
+  animation: slideUp 0.5s ease-out;
+}
+
+.loader-icon {
+  font-size: 3rem;
+  animation: pulse 2s infinite;
+}
+
+.loader-message {
+  color: $primary;
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin: 0;
+  animation: fadeInOut 2s infinite;
+}
+
+.loader-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+
+  span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: $primary;
+    animation: bounce 1.4s infinite ease-in-out both;
+
+    &:nth-child(1) {
+      animation-delay: -0.32s;
+    }
+
+    &:nth-child(2) {
+      animation-delay: -0.16s;
+    }
+
+    &:nth-child(3) {
+      animation-delay: 0s;
+    }
+  }
+}
+
+// Loader Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+}
+
+@keyframes fadeInOut {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes bounce {
+
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+
+  40% {
+    transform: scale(1);
+  }
+}
+
+// Additional Styles migrated from main.css
+
+// Custom Button Variants - Maintained consistent with new theme
+.btn-custom {
+  @extend .btn-primary;
+}
+
+.btn-gradient-warm {
+  background: linear-gradient(135deg, $warning 0%, $danger 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba($danger, 0.3);
+
+  &:hover {
+    filter: brightness(1.1);
+    color: white;
+    transform: translateY(-3px);
+  }
+}
+
+.btn-gradient-cool {
+  background: linear-gradient(135deg, $primary 0%, $success 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba($primary, 0.3);
+
+  &:hover {
+    filter: brightness(1.1);
+    color: white;
+    transform: translateY(-3px);
+  }
+}
+
+.btn-gradient-gold {
+  background: linear-gradient(135deg, $warning 0%, darken($warning, 10%) 100%);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba($warning, 0.3);
+
+  &:hover {
+    filter: brightness(1.1);
+    color: white;
+    transform: translateY(-3px);
+  }
+}
+
+.giving-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2) !important;
+  }
+}
+
+.verse-section {
+  background-color: #ffffff;
+  padding: 3rem 2rem;
+  border-radius: 15px;
+  box-shadow: 20px 20px 60px #d9d9d9, -20px -20px 60px #ffffff;
+}
+
+.blockquote {
+  font-size: 1.2rem;
+  font-style: italic;
+  border-left: 4px solid $primary; // Used $primary instead of hardcoded
+  padding-left: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.blockquote-footer {
+  font-style: normal;
+  font-size: 1rem;
+  color: $secondary;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  background: #000;
+  border-radius: 15px;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.countdown-timer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.countdown-item {
+  background: #fff;
+  padding: 1rem 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.countdown-value {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.countdown-label {
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.speaker-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+// Gravity Bounce Animation (renamed from bounce in main.css)
+@keyframes bounce-gravity {
+
+  0%,
+  20%,
+  53%,
+  80%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  40%,
+  43% {
+    transform: translate3d(0, -30px, 0);
+  }
+
+  70% {
+    transform: translate3d(0, -15px, 0);
+  }
+
+  90% {
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+// Override icon-bounce to use gravity bounce
+.icon-bounce:hover {
+  animation: bounce-gravity 0.6s ease;
+}

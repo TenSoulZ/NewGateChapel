@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Gate Chapel</title>
+    <style>
+      /* Initial Loader Styles - Will be visible during bundle loading */
+      #initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(135deg,
+          #00E5FF 0%, 
+          #0099CC 12.5%, 
+          #0080FF 25%, 
+          #0040AA 37.5%, 
+          #1A237E 50%, 
+          #6A1B9A 62.5%, 
+          #C2185B 75%, 
+          #D32F2F 87.5%, 
+          #B71C1C 100%);
+        background-size: 400% 400%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out;
+        animation: gradientShift 15s ease infinite;
+      }
+
+      @keyframes gradientShift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      #initial-loader.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .initial-loader-content {
+        text-align: center;
+        color: white;
+      }
+
+      .initial-loader-icon {
+        width: 150px;
+        height: 150px;
+        margin: 0 auto 1.5rem;
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      .initial-loader-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .initial-spinner {
+        width: 3rem;
+        height: 3rem;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        margin: 0 auto 1.5rem;
+        animation: spin 1s linear infinite;
+      }
+
+      .initial-loader-message {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      }
+
+      .initial-loader-dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+      }
+
+      .initial-loader-dots span {
+        width: 8px;
+        height: 8px;
+        background-color: white;
+        border-radius: 50%;
+        animation: bounce 1.4s ease-in-out infinite;
+      }
+
+      .initial-loader-dots span:nth-child(1) {
+        animation-delay: 0s;
+      }
+
+      .initial-loader-dots span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .initial-loader-dots span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes pulse {
+        0%, 100% { 
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% { 
+          transform: scale(1.1);
+          opacity: 0.8;
+        }
+      }
+
+      @keyframes bounce {
+        0%, 80%, 100% { 
+          transform: translateY(0);
+          opacity: 1;
+        }
+        40% { 
+          transform: translateY(-10px);
+          opacity: 0.7;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Initial Loader - Shows during bundle loading -->
+    <div id="initial-loader">
+      <div class="initial-loader-content">
+        <div class="initial-loader-icon">
+          <img src="/Images/home/logo.jpg" alt="New Gate Chapel Logo" />
+        </div>
+        <div class="initial-spinner"></div>
+        <p class="initial-loader-message">Loading New Gate Chapel...</p>
+        <div class="initial-loader-dots">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
