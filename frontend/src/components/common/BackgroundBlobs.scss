@@ -23,10 +23,10 @@
     left: 10%;
     width: 500px;
     height: 500px;
-    background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
-    filter: blur(40px); // Reduced from 80px
-    opacity: 0.8;
-    animation: float-1 20s ease-in-out infinite;
+    background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 60%);
+    opacity: 0.6;
+    // filter: blur(40px); // DISABLED
+    // animation: float-1 20s ease-in-out infinite; // DISABLED
 }
 
 .bg-blob-2 {
@@ -34,10 +34,10 @@
     right: 5%;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(160, 2, 92, 0.1) 0%, transparent 70%);
-    filter: blur(50px); // Reduced from 100px
-    opacity: 0.8;
-    animation: float-2 25s ease-in-out infinite;
+    background: radial-gradient(circle, rgba(160, 2, 92, 0.08) 0%, transparent 60%);
+    opacity: 0.6;
+    // filter: blur(50px); // DISABLED
+    // animation: float-2 25s ease-in-out infinite; // DISABLED
 }
 
 .bg-blob-3 {
@@ -45,10 +45,10 @@
     left: 50%;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(0, 40, 85, 0.1) 0%, transparent 70%);
-    filter: blur(45px); // Reduced from 90px
-    opacity: 0.8;
-    animation: float-3 30s ease-in-out infinite;
+    background: radial-gradient(circle, rgba(0, 40, 85, 0.08) 0%, transparent 60%);
+    opacity: 0.6;
+    // filter: blur(45px); // DISABLED
+    // animation: float-3 30s ease-in-out infinite; // DISABLED
 }
 
 @keyframes float-1 {
