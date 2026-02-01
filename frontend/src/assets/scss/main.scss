@@ -440,27 +440,19 @@ body {
     &::before {
         content: '';
         position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(circle at center, rgba($brand-cyan-bright, 0.1) 0%, transparent 60%),
-            radial-gradient(circle at 70% 30%, rgba($brand-magenta, 0.08) 0%, transparent 50%);
-        animation: rotateGradient 40s linear infinite;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        // Removed expensive rotation animation
+        background: radial-gradient(circle at center, rgba($brand-cyan-bright, 0.05) 0%, transparent 60%);
         z-index: 1;
         pointer-events: none;
     }
 }
 
-@keyframes rotateGradient {
-    0% {
-        transform: rotate(0deg);
-    }
-
-    100% {
-        transform: rotate(360deg);
-    }
-}
+// Optimization: Removed unused keyframes
+// @keyframes rotateGradient { ... }
 
 // Disable animations for users who prefer reduced motion
 @media (prefers-reduced-motion: reduce) {
