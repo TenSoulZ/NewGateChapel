@@ -36,6 +36,7 @@ const Header = () => {
           <img 
             src="/newgatechapellogo.svg" 
             alt="New Gate Chapel Logo" 
+            width="45"
             height="45"
             style={{ objectFit: 'contain' }}
           />

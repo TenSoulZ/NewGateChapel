@@ -202,47 +202,29 @@ const Home = () => {
         <Container>
           <Row className="text-center mb-5">
             <Col>
-              <motion.h2 
-                className="display-4 fw-bold mb-3"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
+              <h2 className="display-4 fw-bold mb-3">
                 Why Choose <span className="text-gradient">New Gate Chapel</span>
-              </motion.h2>
-              <motion.p 
-                className="lead text-muted"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
+              </h2>
+              <p className="lead text-muted">
                 Discover what makes our church family special
-              </motion.p>
+              </p>
             </Col>
           </Row>
 
           <Row className="g-4">
             {features.map((feature, index) => (
               <Col key={index} md={6} lg={3}>
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                >
-                  <Card className="h-100 border-0 glass-panel text-center p-4 hover-lift">
-                    <Card.Body>
-                      <div className="text-primary mb-4 p-3 d-inline-block rounded-circle bg-white shadow-sm">
-                        <feature.icon size={40} />
-                      </div>
-                      <Card.Title className="h5 fw-bold mb-3">{feature.title}</Card.Title>
-                      <Card.Text className="text-muted small">
-                        {feature.description}
-                      </Card.Text>
-                    </Card.Body>
-                  </Card>
-                </motion.div>
+                <Card className="h-100 border-0 glass-panel text-center p-4 hover-lift">
+                  <Card.Body>
+                    <div className="text-primary mb-4 p-3 d-inline-block rounded-circle bg-white shadow-sm">
+                      <feature.icon size={40} />
+                    </div>
+                    <Card.Title className="h5 fw-bold mb-3">{feature.title}</Card.Title>
+                    <Card.Text className="text-muted small">
+                      {feature.description}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
               </Col>
             ))}
           </Row>
@@ -254,53 +236,35 @@ const Home = () => {
         <Container>
           <Row className="text-center mb-5">
             <Col>
-              <motion.h2 
-                className="display-4 fw-bold mb-3"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-              >
+              <h2 className="display-4 fw-bold mb-3">
                 Upcoming <span className="text-gradient">Events</span>
-              </motion.h2>
-              <motion.p 
-                className="lead text-muted"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
+              </h2>
+              <p className="lead text-muted">
                 Join us for these exciting gatherings
-              </motion.p>
+              </p>
             </Col>
           </Row>
 
           <Row className="g-4">
             {upcomingEvents.map((event, index) => (
               <Col key={index} md={6} lg={4}>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.15 }}
-                >
-                  <Card className="h-100 border-0 glass-panel shadow-sm hover-lift">
-                    <Card.Body className="p-4 p-lg-5">
-                      <div className="d-flex align-items-center mb-4">
-                        <div className="bg-primary bg-opacity-10 p-2 rounded-3 me-3">
-                          <FaCalendarAlt className="text-primary" size={24} />
-                        </div>
-                        <small className="text-primary fw-bold text-uppercase">{event.date}</small>
+                <Card className="h-100 border-0 glass-panel shadow-sm hover-lift">
+                  <Card.Body className="p-4 p-lg-5">
+                    <div className="d-flex align-items-center mb-4">
+                      <div className="bg-primary bg-opacity-10 p-2 rounded-3 me-3">
+                        <FaCalendarAlt className="text-primary" size={24} />
                       </div>
-                      <Card.Title className="h3 fw-bold mb-3">{event.title}</Card.Title>
-                      <Card.Text className="text-muted mb-4">
-                        {event.description}
-                      </Card.Text>
-                      <Button variant="primary" className="px-4" href="/events">
-                        Learn More
-                      </Button>
-                    </Card.Body>
-                  </Card>
-                </motion.div>
+                      <small className="text-primary fw-bold text-uppercase">{event.date}</small>
+                    </div>
+                    <Card.Title className="h3 fw-bold mb-3">{event.title}</Card.Title>
+                    <Card.Text className="text-muted mb-4">
+                      {event.description}
+                    </Card.Text>
+                    <Button variant="primary" className="px-4" href="/events">
+                      Learn More
+                    </Button>
+                  </Card.Body>
+                </Card>
               </Col>
             ))}
           </Row>
@@ -320,30 +284,14 @@ const Home = () => {
           <div className="glass-panel p-5 p-lg-5 border-white border-opacity-25 text-center text-white">
             <Row className="justify-content-center py-4">
               <Col lg={8}>
-                <motion.h2 
-                  className="display-4 fw-bold mb-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                >
+                <h2 className="display-4 fw-bold mb-4">
                   Ready to Join Our Community?
-                </motion.h2>
-                <motion.p 
-                  className="lead mb-5 opacity-75"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                >
+                </h2>
+                <p className="lead mb-5 opacity-75">
                   Walking into a new church can be intimidating, but we promise a warm welcome. 
                   We'd love to meet you and hear your story.
-                </motion.p>
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                >
+                </p>
+                <div>
                   <Button 
                     variant="light" 
                     size="lg" 
@@ -353,7 +301,7 @@ const Home = () => {
                   >
                     Get Connected
                   </Button>
-                </motion.div>
+                </div>
               </Col>
             </Row>
           </div>

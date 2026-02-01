@@ -29,7 +29,6 @@
  */
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
-import { motion } from 'framer-motion';
 
 const Hero = ({ 
   title, 
@@ -40,25 +39,6 @@ const Hero = ({
   backgroundImage,
   backgroundGradient = 'linear-gradient(135deg, rgba(0, 119, 182, 0.8) 0%, rgba(3, 4, 94, 0.9) 100%)'
 }) => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    }
-  };
 
   return (
     <section 
@@ -90,44 +70,37 @@ const Hero = ({
       <Container className="position-relative" style={{ zIndex: 2 }}>
         <Row className="align-items-center justify-content-center">
           <Col lg={10} xl={9} className="text-center">
-            <motion.div
+            <div
               className="glass-panel p-5 p-md-5 mx-auto text-white shadow-lg"
               style={{ maxWidth: '900px' }}
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
             >
               {subtitle && (
-                <motion.p 
+                <p 
                   className="text-warning text-uppercase fw-bold mb-3"
-                  variants={itemVariants}
                   style={{ letterSpacing: '3px', fontSize: '0.9rem' }}
                 >
                   {subtitle}
-                </motion.p>
+                </p>
               )}
               
-              <motion.h1 
+              <h1 
                 className="display-2 fw-bold text-white mb-4"
-                variants={itemVariants}
-                style={{ lineHeight: 1.1, textShadow: '0 4px 12px rgba(0,0,0,0.3)' }}
+                style={{ lineHeight: 1.1 }}
               >
                 {title}
-              </motion.h1>
+              </h1>
               
               {description && (
-                <motion.p 
+                <p 
                   className="lead text-light mb-5 mx-auto opacity-75" 
                   style={{ maxWidth: '700px', lineHeight: 1.6 }}
-                  variants={itemVariants}
                 >
                   {description}
-                </motion.p>
+                </p>
               )}
               
-              <motion.div 
+              <div 
                 className="d-flex gap-3 justify-content-center flex-wrap"
-                variants={itemVariants}
               >
                 {primaryButton && (
                   <Button 
@@ -149,8 +122,8 @@ const Hero = ({
                     {secondaryButton.text}
                   </Button>
                 )}
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           </Col>
         </Row>
       </Container>
