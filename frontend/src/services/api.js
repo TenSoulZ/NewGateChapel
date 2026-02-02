@@ -517,7 +517,8 @@ export default {
      */
     getContactMessages: async () => {
         const response = await api.get('/contact-messages/');
-        return response.data;
+        // Handle pagination response structure
+        return response.data.results || response.data;
     },
 
     /**
