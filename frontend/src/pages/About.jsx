@@ -28,6 +28,7 @@ import Hero from '../components/common/Hero';
 import SEO from '../components/common/SEO';
 import { motion } from 'framer-motion';
 import api from '../services/api.js';
+import { getImageUrl } from '../utils/imageUrl';
 
 /**
  * Maps icon names from API to React Icon components.
@@ -246,7 +247,7 @@ const About = () => {
                       >
                         {member.image ? (
                           <img 
-                            src={member.image} 
+                            src={getImageUrl(member.image)} 
                             alt={member.name} 
                             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                             onError={(e) => {

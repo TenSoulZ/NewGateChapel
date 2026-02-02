@@ -20,6 +20,10 @@ services:
         fromDatabase:
           name: newgate-db
           property: connectionString
+    disk:
+      name: newgate_media
+      mountPath: /opt/render/project/src/backend/media
+      sizeGB: 1
 
   - type: static
     name: newgate-frontend

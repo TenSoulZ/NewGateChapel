@@ -10,6 +10,7 @@ import api from '../../../services/api.js';
 import { motion } from 'framer-motion';
 import DeleteConfirmModal from '../../../components/common/DeleteConfirmModal';
 import SuccessModal from '../../../components/common/SuccessModal';
+import { getImageUrl } from '../../../utils/imageUrl';
 
 const AboutManagement = () => {
   const [values, setValues] = useState([]);
@@ -251,7 +252,7 @@ const AboutManagement = () => {
                   {leadership.map((leader) => (
                     <div key={leader.id} className="p-4 rounded-4 border border-white border-opacity-5 bg-white bg-opacity-5 hover-lift d-flex align-items-center gap-3">
                       <div className="bg-white bg-opacity-10 rounded-circle overflow-hidden shadow-inner" style={{ width: '60px', height: '60px', flexShrink: 0 }}>
-                        {leader.image ? <img src={leader.image} alt={leader.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <div className="h-100 d-flex align-items-center justify-content-center text-white opacity-25 h3 mb-0">👤</div>}
+                        {leader.image ? <img src={getImageUrl(leader.image)} alt={leader.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <div className="h-100 d-flex align-items-center justify-content-center text-white opacity-25 h3 mb-0">👤</div>}
                       </div>
                       <div className="flex-grow-1 min-vw-0">
                         <h6 className="fw-bold text-white mb-1 text-truncate">{leader.name}</h6>
@@ -320,7 +321,7 @@ const AboutManagement = () => {
           <Form>
             <div className="text-center mb-4">
               <div className="bg-white bg-opacity-10 rounded-circle mx-auto overflow-hidden shadow-lg border border-white border-opacity-10" style={{ width: '120px', height: '120px' }}>
-                {leaderForm.imagePreview ? <img src={leaderForm.imagePreview} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : leaderForm.image ? <img src={leaderForm.image} alt="Current" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <div className="h-100 d-flex align-items-center justify-content-center text-white opacity-25 h1 mb-0">👤</div>}
+                {leaderForm.imagePreview ? <img src={leaderForm.imagePreview} alt="Preview" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : leaderForm.image ? <img src={getImageUrl(leaderForm.image)} alt="Current" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /> : <div className="h-100 d-flex align-items-center justify-content-center text-white opacity-25 h1 mb-0">👤</div>}
               </div>
               <Button variant="link" className="text-primary small mt-2" onClick={() => document.getElementById('leader-photo-upload').click()}>Update Photo</Button>
               <input type="file" id="leader-photo-upload" hidden accept="image/*" onChange={handleImageUpload} />
