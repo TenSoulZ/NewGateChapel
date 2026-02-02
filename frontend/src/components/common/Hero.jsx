@@ -29,6 +29,7 @@
  */
 import React from 'react';
 import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Hero = ({ 
   title, 
@@ -39,6 +40,30 @@ const Hero = ({
   backgroundImage,
   backgroundGradient = 'linear-gradient(135deg, rgba(0, 119, 182, 0.8) 0%, rgba(3, 4, 94, 0.9) 100%)'
 }) => {
+
+  // Helper to determine if link is internal
+  const renderButtonContent = (btn, variant, className) => {
+    const isInternal = btn.href && btn.href.startsWith('/');
+    const commonProps = {
+      variant,
+      size: 'lg',
+      className: className,
+    };
+
+    if (isInternal) {
+      return (
+        <Button {...commonProps} as={Link} to={btn.href}>
+          {btn.text}
+        </Button>
+      );
+    }
+
+    return (
+      <Button {...commonProps} href={btn.href}>
+        {btn.text}
+      </Button>
+    );
+  };
 
   return (
     <section 
@@ -102,26 +127,8 @@ const Hero = ({
               <div 
                 className="d-flex gap-3 justify-content-center flex-wrap"
               >
-                {primaryButton && (
-                  <Button 
-                    variant="primary" 
-                    size="lg" 
-                    className="px-5 shadow-lg fw-bold"
-                    href={primaryButton.href}
-                  >
-                    {primaryButton.text}
-                  </Button>
-                )}
-                {secondaryButton && (
-                  <Button 
-                    variant="outline-light" 
-                    size="lg" 
-                    className="px-5 rounded-pill fw-bold"
-                    href={secondaryButton.href}
-                  >
-                    {secondaryButton.text}
-                  </Button>
-                )}
+                {primaryButton && renderButtonContent(primaryButton, 'primary', 'px-5 shadow-lg fw-bold')}
+                {secondaryButton && renderButtonContent(secondaryButton, 'outline-light', 'px-5 rounded-pill fw-bold')}
               </div>
             </div>
           </Col>
@@ -137,5 +144,4 @@ const Hero = ({
     </section>
   );
 };
-
 export default Hero;

@@ -296,7 +296,8 @@ const Home = () => {
                     variant="light" 
                     size="lg" 
                     className="px-5 shadow-lg fw-bold"
-                    href="/contact"
+                    as={Link} 
+                    to="/contact"
                     style={{ color: '#A0025C' }}
                   >
                     Get Connected

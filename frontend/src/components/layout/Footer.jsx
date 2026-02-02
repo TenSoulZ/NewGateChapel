@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import { FaFacebook, FaTwitter, FaInstagram, FaYoutube, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
+import { FaYoutube, FaMapMarkerAlt, FaPhone, FaEnvelope } from 'react-icons/fa';
 
 import { Link } from 'react-router-dom';
 
@@ -18,20 +18,9 @@ const Footer = () => {
             <p className="text-white-50">
               A vibrant community of believers dedicated to worship, fellowship, and spiritual growth.
             </p>
-            <div className="d-flex gap-3 mt-3">
-              <a href="#" className="text-white fs-4" aria-label="Facebook" style={{ transition: 'color 0.2s' }}>
-                <FaFacebook size={24} />
-              </a>
-              <a href="#" className="text-white fs-4" aria-label="Twitter" style={{ transition: 'color 0.2s' }}>
-                <FaTwitter size={24} />
-              </a>
-              <a href="#" className="text-white fs-4" aria-label="Instagram" style={{ transition: 'color 0.2s' }}>
-                <FaInstagram size={24} />
-              </a>
-              <a href="#" className="text-white fs-4" aria-label="YouTube" style={{ transition: 'color 0.2s' }}>
+              <a href="https://www.youtube.com/@pastorerasmusmakarimayi1069" target="_blank" rel="noopener noreferrer" className="text-white fs-4" aria-label="YouTube" style={{ transition: 'color 0.2s' }}>
                 <FaYoutube size={24} />
               </a>
-            </div>
           </Col>
 
           {/* Quick Links */}
