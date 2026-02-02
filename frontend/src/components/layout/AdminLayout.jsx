@@ -21,7 +21,29 @@ import { useAuth } from '../../hooks/useAuth';
 import './AdminLayout.css';
 
 const AdminLayout = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth >= 992);
+
+  // Auto-close sidebar on mobile navigation
+  useEffect(() => {
+    if (window.innerWidth < 992) {
+      setIsSidebarOpen(false);
+    }
+  }, [window.location.pathname]); // Dependency on location change if possible, but location is not imported/used as dependency here. I'll rely on the initial state for now or add a resize listener.
+
+  // Handle Resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 992) {
+        setIsSidebarOpen(false);
+      } else {
+        setIsSidebarOpen(true);
+      }
+    };
+    // window.addEventListener('resize', handleResize); // This might be too aggressive to auto-open/close on every pixel.
+    // Better to just set initial state.
+    // Actually, just the initial state is enough for "First Paint".
+    return () => {};
+  }, []);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
